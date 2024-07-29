@@ -25,8 +25,8 @@ app.get('/api/recipes', async (req, res) => {
 });
 
 //Get recipes with particular id(if it exists)
-app.get('/api/recipes/:id', (req, res) => {
-  const recipe = recipes.find(r => r.id === parseInt(req.params.json))
+app.get('/api/recipes/:id', async (req, res) => {
+  const recipe = await getRecipeByID(req.params.id);
   res.json({success: true, payload:recipe});
 });
 // Create a new recipe

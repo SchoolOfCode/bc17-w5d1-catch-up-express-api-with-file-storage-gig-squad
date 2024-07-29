@@ -1,7 +1,7 @@
 /*
 Node module imports
 */
-import fs from 'node:fs/promises';
+import * as fs from 'node:fs/promises';
 import { v4 as uuidv4 } from 'uuid';
 
 /*
@@ -48,8 +48,17 @@ export async function getRecipes() {
   return data;
 }
 
+
+
 // Get a recipe by ID.
-export async function getRecipeByID(id) {}
+export async function getRecipeByID(id) {
+  //const data = await readJsonFile('recipes.json')[id];
+  const data = await readJsonFile('recipes.json');
+  let indexOfActivity = data.findIndex((el) => {
+    return el.id === id;
+  });
+  return(data[indexOfActivity]);
+}
 
 // Create a recipe.
 export async function createRecipe(newRecipe) {}
