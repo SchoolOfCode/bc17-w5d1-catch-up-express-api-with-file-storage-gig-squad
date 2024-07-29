@@ -19,7 +19,8 @@ app.listen(PORT, () => {
 });
 
 //Get all Recipes
-app.get('/api/recipes', (req, res) => {
+app.get('/api/recipes', async (req, res) => {
+  let recipes = await getRecipes();
   res.json({success: true, payload: recipes});
 });
 
